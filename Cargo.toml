@@ -1,0 +1,19 @@
+[package]
+name = "playground-x509-slh-dsa"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+pkcs8 = { version = "=0.11.0-rc.1", features = ["pem"] }
+x509-cert = { version = "0.3.0-pre", features = ["builder"] }
+slh-dsa = { version = "0.2.0-pre" }
+hex-literal = "0.4.1"
+rand = "0.8.5"
+
+[patch.crates-io]
+x509-cert = { git = "https://github.com/RustCrypto/formats.git" }
+# https://github.com/RustCrypto/formats/pull/1541
+const-oid = { git = "https://github.com/baloo/formats.git", branch = "baloo/const-oid/fips203-204-205" }
+# https://github.com/RustCrypto/signatures/pull/867
+slh-dsa = { git = "https://github.com/baloo/signatures.git", branch = "baloo/slh-dsa/pkcs8" }
+
